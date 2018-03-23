@@ -11,7 +11,7 @@ var map; //background grid
 
 class playerCharacter {
 		
-		constructor (name, baseHP, baseMana, baseHeadArmour, baseChestArmour, baseLegArmour, baseGauntletArmour, baseMovement) {
+		constructor (name, baseHP, baseMana, baseAttack, baseHeadArmour, baseChestArmour, baseLegArmour, baseGauntletArmour, baseMovement) {
 			
 			this.name = name;
 			this.baseHP = baseHP;
@@ -46,6 +46,26 @@ class playerCharacter {
 			return baseMana;
 		}
 		
+		setAttack (atk) {
+			baseAttack = atk;
+		}
+		
+		getAttack () {
+			return baseAttack;
+		}
+		
+		subMana (MP) {
+			baseMana -= MP;
+		}
+		
+		subHP (health) {
+			baseHP -= health;
+		}
+		
+		addAttack (atk) {
+			baseAttack += atk;
+		}
+		
 		statCheck () {
 		
 			console.log(this.name + this.baseHP + this.baseMana + this.baseHeadArmour + this.baseChestArmour + this.baseLegArmour + this.baseGauntletArmour);
@@ -55,12 +75,16 @@ class playerCharacter {
 	
 class Warrior extends playerCharacter {
 	
-	function attackBuff () {
+	function attackBuff (caster) {
 		
-		
+		caster.subMana (3);
+		caster.addAttack (5);
 		
 	}
 	
+	constructor (rageActive) {
+		this.rageActive = fales;
+	}
 }
 	
 	var cancer = new playerCharacter('Joe', 10, 10, 2, 5, 3, 2, 1);
