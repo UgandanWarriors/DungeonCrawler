@@ -22,12 +22,46 @@ class playerCharacter {
 			this.baseGauntletArmour = baseGauntletArmour;
 		}
 		
+		setName (Name) {
+			name = Name;
+		}
+		
+		getName () {
+			return name;
+		}
+		
+		setHP (health) {
+			baseHP = health;
+		}
+		
+		getHealth () {
+			return baseHP;
+		}
+		
+		setMana (MP) {
+			baseMana = MP;
+		}
+		
+		getMana () {
+			return baseMana;
+		}
+		
 		statCheck () {
 		
 			console.log(this.name + this.baseHP + this.baseMana + this.baseHeadArmour + this.baseChestArmour + this.baseLegArmour + this.baseGauntletArmour);
 		
 		}
 	}
+	
+class Warrior extends playerCharacter {
+	
+	function attackBuff () {
+		
+		
+		
+	}
+	
+}
 	
 	var cancer = new playerCharacter('Joe', 10, 10, 2, 5, 3, 2, 1);
 	cancer.statCheck();
