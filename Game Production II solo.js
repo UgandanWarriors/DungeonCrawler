@@ -1,10 +1,13 @@
 var c = document.getElementById("gameCanvas");
+var player = document.getElementById("Warrior");
 var ctx = c.getContext("2d");
-window.addEventListener("keypress", keyPressed);
+window.addEventListener("keydown", onKeyDown);
+window.addEventListener("Keyup", onKeyUp);
 var leftPressed = false;
 var rightPressed = false;
 var upPressed = false;
 var downPressed = false;
+var updateInterval = setInterval(update,16.67);
 
 var Warrior = document.getElementById("Warrior");
 var WarriorX = 405;
@@ -62,10 +65,11 @@ var level = 1;
 testMapCreation(tileX, tileY);
 
 Characters(WarriorX, WarriorY, RangerX, RangerY, MageX, MageY, RedGolumnX, RedGolumnY, FellBatX, FellBatY, NatureWispX, NatureWispY);
-
+//setInterval(Characters(), 3000);
 TurnOrder();
 function update()
 {
+	
 	Movement()
 }
 
@@ -81,46 +85,66 @@ function TurnOrder()
 			p++;
 		}
 }
-function keyPressed(event)
+function onKeyDown(event)
 {
 	switch(event.keyCode)
 	{
 		case 65: //A
 		leftPressed = true;
 		break;
-		case 68: 
+		case 68: //D
 		rightPressed = true;
 		break;
-		case 87:
+		case 87: //W
 		upPressed = true;
 		break;
-		case 83: 
+		case 83: //S
 		downPressed = true;
+		break;
+	}
+}
+function onKeyUp(event)
+{
+	switch(event.keyCode)
+	{
+		case 65: //A
+		leftPressed = false;
+		break;
+		case 68: //D
+		rightPressed = false;
+		break;
+		case 87: //W
+		upPressed = false;
+		break;
+		case 83: //S
+		downPressed = false;
 		break;
 	}
 }
 function Movement()
 {
-	if(leftPressed == true && playerX > 0)
+	if(leftPressed == true)
 	{
 		WarriorX -= 100;
-		setInterval(Characters, 17);
+		player.style.left = WarriorX;
 	}
-	if(rightPressed == true && playerX < 1300)
+	if(rightPressed == true)
 	{
 		WarriorX += 100;
+		player.style.left = WarriorX;
 	}
-	if(upPressed == true && playerY > 0)
+	if(upPressed == true)
 	{
 		WarriorY -= 100;
+		player.style.top = WarriorY;
 	}
-	if(downPressed == true && playerY < 700)
+	if(downPressed == true)
 	{
 		WarriorY += 100;
+		player.style.top = WarriorY;
 	}
 	
 }
-
 function Characters()
 {
 	
@@ -130,6 +154,9 @@ function Characters()
 	ctx.drawImage(RedGolumn, RedGolumnX, RedGolumnY, 90, 90);
 	ctx.drawImage(FellBat, FellBatX, FellBatY, 90, 90);
 	ctx.drawImage(NatureWisp, NatureWispX, NatureWispY, 90, 90);
+	
+	//var theWarrior = ctx.getImageData(WarriorX, WarriorY, 90, 90);
+	//ctx.putImageData(theWarrior, WarriorX,WarriorY, 150,150, 90,90);//try putting this in update image stuff
 	
 }
 	
