@@ -52,6 +52,10 @@ var map = [
 
 ];
 
+// var store = [, , , , , ];
+// name armour = new armour(dfahhdfliahfiudhasiho);
+// store[0] = armour;
+
 var x = 0;//used for navigation of array
 var y = 0;
 var counter = 98; //to fill screen set to 98
@@ -470,13 +474,12 @@ class MAGE extends playerCharacter
 		{
 			caster.addAttack(3);
 		}
-	}
-	
-	else if (map[creatureMageY / 100][creatureMageX / 100] != "RedRock" && caster.getTilePreference() == true)
+		else if (map[creatureMageY / 100][creatureMageX / 100] != "RedRock" && caster.getTilePreference() == true)
 		{
 			caster.setTilePref(false);
 			caster.subAttack(3);
 		}
+	}
 }
 
 class natureWisp extends playerCharacter {
