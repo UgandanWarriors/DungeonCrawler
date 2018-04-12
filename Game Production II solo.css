@@ -1,7 +1,47 @@
-div
+
+WarriorTag
+{
+	left: 15px;
+	top: 15px;
+	z-index: 1;
+	position: absolute;
+}
+RangerTag
+{
+	left: 15px;
+	top: 115px;
+	z-index: 1;
+	position: absolute;
+}
+MageTag
+{
+	left: 15px;
+	top: 215px;
+	z-index: 1;
+	position: absolute;
+}
+RedGolumnTag
+{
+	left: 1515px;
+	top: 315px;
+	z-index: 1;
+	position: absolute;
+}
+FellBatTag
+{
+	left: 1515px;
+	top: 415px;
+	z-index: 1;
+	position: absolute;
+}
+NatureWispTag
+{
+	left: 1515px;
+	top: 515px;
+	z-index: 1;
+	position: absolute;
+}
+.sprite
 {
 	position: absolute;
-	left: 18px;
-	top: 18px;
-	z-index: 1; 
 }

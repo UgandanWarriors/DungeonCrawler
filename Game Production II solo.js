@@ -1,53 +1,49 @@
 var c = document.getElementById("gameCanvas");
-var player = document.getElementById("Warrior");
+var creatureWarrior = document.getElementById("PWarrior");
 var ctx = c.getContext("2d");
+
+var creatureWarriorX = 0;
+var creatureWarriorY = 0;
+
+var creatureRanger = document.getElementById("Ranger");
+var creatureRangerX = 0;
+var creatureRangerY = 100;
+
+var creatureMage = document.getElementById("Mage");
+var creatureMageX = 0;
+var creatureMageY = 200;
+
+var creatureFellBat = document.getElementById("FellBat");
+var creatureFellBatX = 0;
+var creatureFellBatY = 300;
+
+var creatureRedGolumn = document.getElementById("RedGolumn");
+var creatureRedGolumnX = 0;
+var creatureRedGolumnY = 400;
+
+var creatureNatureWisp = document.getElementById("NatureWisp");
+var creatureNatureWispX = 0;
+var creatureNatureWispY = 500;
 window.addEventListener("keydown", onKeyDown);
-window.addEventListener("Keyup", onKeyUp);
+window.addEventListener("keyup", onKeyUp);
 var leftPressed = false;
 var rightPressed = false;
 var upPressed = false;
 var downPressed = false;
 var updateInterval = setInterval(update,16.67);
 
-var Warrior = document.getElementById("Warrior");
-var WarriorX = 405;
-var WarriorY = 405;
-
-var Ranger = document.getElementById("Ranger");
-var RangerX = 205;
-var RangerY = 205;
-
-var Mage = document.getElementById("Mage");
-var MageX = 605;
-var MageY = 605;
-
 var Grass = document.getElementById("Grass");
 var RedRock = document.getElementById("RedRock");
 var Stone = document.getElementById("Stone");
 
-var RedGolumn = document.getElementById("RedGolumn");
-var RedGolumnX = 305;
-var RedGolumnY = 305;
-
-var FellBat = document.getElementById("FellBat");
-var FellBatX = 505;
-var FellBatY = 505;
-
-var NatureWisp = document.getElementById("NatureWisp");
-var NatureWispX = 205;
-var NatureWispY = 105; 
-
 var tileX = 0;
 var tileY = 0;
 
-var classes = ["Warrior", "Ranger", "Mage", "RedGolumn", "FellBat", "NatureBat"];
-var randomOrder;
-var i = 6;
-var p = 0;
-var order = [];
-var map = [                                           //third number is tile type ie: grass, stone, redrock | when number is subtracting by 100 you will have a whole number if the creature is compatable with the tile if not they are not compatable                                        
-    [ , ],                                            //second number is the number of the number of that enemy ie bat[2] bat[3]
-    [ , ],											  //first number is the type of creature on tile
+var classes = ["Warrior", "RedGolumn", "Ranger", "NatureWisp","Mage","FellBat"];
+var currentTurn;
+var map = [
+    [ , ],
+    [ , ],
     [ , ],
     [ , ],
 	[ , ],
@@ -55,6 +51,7 @@ var map = [                                           //third number is tile typ
 	[ , ]
 
 ];
+
 var x = 0;//used for navigation of array
 var y = 0;
 var counter = 98; //to fill screen set to 98
@@ -62,28 +59,37 @@ var tilePicker = 3;
 var StartClass = "Ranger";
 var level = 1;
 
+var CharTracker = [
+	[ , ],
+	[ , ],
+	[ , ],
+	[ , ],
+	[ , ],
+	[ , ],
+	[ , ]
+];
+
 testMapCreation(tileX, tileY);
 
-Characters(WarriorX, WarriorY, RangerX, RangerY, MageX, MageY, RedGolumnX, RedGolumnY, FellBatX, FellBatY, NatureWispX, NatureWispY);
-//setInterval(Characters(), 3000);
+//Characters(WarriorX, WarriorY, RangerX, RangerY, MageX, MageY, RedGolumnX, RedGolumnY, FellBatX, FellBatY, NatureWispX, NatureWispY);
+
 TurnOrder();
 function update()
 {
 	
-	Movement()
+	//creatureReset();//this must go first so it can clear the old position of creatures without interferring with the current
+	Movement();
+	leftPressed = false;
+	rightPressed = false;
+	upPressed = false;
+	downPressed = false;
+	
 }
 
 function TurnOrder()
 {
-	while(order.length != 6)
-		{
-			randomOrder = Math.floor((Math.random() * i - 1) + 1);
-			i--;
-
-			order[p] = classes[randomOrder]
-			classes[randomOrder] = null;
-			p++;
-		}
+	currentTurn = Math.floor((Math.random() * 5) + 1);
+	console.log("it is " + classes[currentTurn] + " turn");
 }
 function onKeyDown(event)
 {
@@ -125,41 +131,35 @@ function Movement()
 {
 	if(leftPressed == true)
 	{
-		WarriorX -= 100;
-		player.style.left = WarriorX;
+		creatureReset();
+		creatureWarriorX -= 100;
+		creatureWarrior.style.left = creatureWarriorX + "px";
+		creaturePosition();
 	}
 	if(rightPressed == true)
 	{
-		WarriorX += 100;
-		player.style.left = WarriorX;
+		creatureReset();
+		creatureWarriorX += 100;
+		creatureWarrior.style.left = creatureWarriorX+"px";
+		creaturePosition();
 	}
 	if(upPressed == true)
 	{
-		WarriorY -= 100;
-		player.style.top = WarriorY;
+		creatureReset();
+		creatureWarriorY -= 100;
+		creatureWarrior.style.top = creatureWarriorY + "px";
+		creaturePosition();
 	}
 	if(downPressed == true)
-	{
-		WarriorY += 100;
-		player.style.top = WarriorY;
+	{	
+		creatureReset();
+		creatureWarriorY += 100;
+		creatureWarrior.style.top = creatureWarriorY+"px";
+		creaturePosition();
 	}
 	
-}
-function Characters()
-{
-	
-	ctx.drawImage(Warrior, WarriorX, WarriorY, 90, 90);
-	ctx.drawImage(Ranger, RangerX, RangerY , 90, 90);
-	ctx.drawImage(Mage, MageX, MageY, 90, 90);
-	ctx.drawImage(RedGolumn, RedGolumnX, RedGolumnY, 90, 90);
-	ctx.drawImage(FellBat, FellBatX, FellBatY, 90, 90);
-	ctx.drawImage(NatureWisp, NatureWispX, NatureWispY, 90, 90);
-	
-	//var theWarrior = ctx.getImageData(WarriorX, WarriorY, 90, 90);
-	//ctx.putImageData(theWarrior, WarriorX,WarriorY, 150,150, 90,90);//try putting this in update image stuff
-	
-}
-	
+}	
+	//ctx.drawImage(Warrior, WarriorX, WarriorY, 90, 90);
 function testMapCreation(tileX, tileY)
 {
 	while(counter != 0)
@@ -174,47 +174,70 @@ function testMapCreation(tileX, tileY)
 		if(tilePicker == 3)
 		{
 			ctx.drawImage(Grass, tileX, tileY, 100, 100);
-			tileX += 100;
-			
-			y++;
+			map[y][x] = "Grass";	
 		}
 		else if(tilePicker == 2)
 		{
 			ctx.drawImage(RedRock, tileX, tileY, 100, 100);
-			tileX += 100;
-			
-			y++;
+			map[y][x] = "RedRock";		
 		}
 		else if(tilePicker == 1)
 		{
 			ctx.drawImage(Stone, tileX, tileY, 100, 100);
-			tileX += 100;
-			
-			y++;
+			map[y][x] = "Stone";		
 		}
 		else if(tilePicker > 3 && level == 1)
 		{
 			if(StartClass == "Warrior")
-			ctx.drawImage(RedRock, tileX, tileY, 100, 100);
+			{
+				ctx.drawImage(RedRock, tileX, tileY, 100, 100);
+				map[y][x] = "RedRock";				
+			}
 			else if(StartClass == "Ranger")
-			ctx.drawImage(Grass, tileX, tileY, 100, 100);
+			{
+				ctx.drawImage(Grass, tileX, tileY, 100, 100);
+				map[y][x] = "Grass";			
+			}
 			else if(StartClass == "Mage")
-			ctx.drawImage(Stone, tileX, tileY, 100, 100);
-		
-			tileX += 100;
-			y++;
+			{
+				ctx.drawImage(Stone, tileX, tileY, 100, 100);
+				map[y][x] = "Stone";
+			}
 		}
+		tileX += 100;
+		x++;
 		if(tileX == 1600)
 		{
 			tileX = 0;
 			tileY += 100;
 		}
-		if(y == 16)
+		if(x == 16)
 		{
-			x++;
-			y = 0;
+			y++;
+			x = 0;
 		}
 	}
+}
+function creaturePosition()
+{
+	CharTracker[creatureWarriorY / 100][creatureWarriorX / 100] = "Warrior";
+	CharTracker[creatureRangerY / 100][creatureRangerX / 100] = "Ranger";
+	CharTracker[creatureMageY / 100][creatureMageX / 100] = "Mage";
+	CharTracker[creatureFellBatY / 100][creatureFellBatX / 100] = "FellBat";
+	CharTracker[creatureRedGolumnY / 100][creatureRedGolumnX / 100] = "RedGolumn";
+	CharTracker[creatureNatureWispY / 100][creatureNatureWispX / 100] = "NatureWisp";
+	console.log(CharTracker[0][1]);
+	console.log(CharTracker[0][0]);
+	console.log(CharTracker[1][0]);
+}
+function creatureReset()
+{
+	CharTracker[creatureWarriorY / 100][creatureWarriorX / 100] = "";
+	CharTracker[creatureRangerY / 100][creatureRangerX / 100] = "";
+	CharTracker[creatureMageY / 100][creatureMageX / 100] = "";
+	CharTracker[creatureFellBatY / 100][creatureFellBatX / 100] = "";
+	CharTracker[creatureRedGolumnY / 100][creatureRedGolumnX / 100] = "";
+	CharTracker[creatureNatureWispY / 100][creatureNatureWispX / 100] = "";
 }
 // get and set methods is how you would do it for combat
 
@@ -426,14 +449,14 @@ class dungeonMerchant {
 	
 }
 
-class item (armourRating, armourName, armourDurability, buyingPrice, sellingPrice){
-	
+class item{
+	constructor(armourRating, armourName, armourDuribility, buyingPrice, sellingPrice){
 		this.armourRating = armourRating;
 		this.armourName = armourName;
 		this.armourDuribility = armourDurability;
 		this.buyingPrice = buyingPrice;
-		this.sellingPrice = sellingPr
-		ice;
+		this.sellingPrice = sellingPrice;
+	}
 		
 		getArmourRating()
 		{
