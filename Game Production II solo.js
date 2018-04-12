@@ -132,8 +132,26 @@ function Movement()
 	if(leftPressed == true)
 	{
 		creatureReset();
-		creatureWarriorX -= 100;
-		creatureWarrior.style.left = creatureWarriorX + "px";
+		if(currentTurn == "Warrior")
+		{
+			creatureWarriorX -= 100;
+			creatureWarrior.style.left = creatureWarriorX + "px";
+		}
+		else if(currentTurn == "RedGolumn")
+		{
+			creatureRedGolumnX -= 100;
+			creatureRedGolumn.style.left = creatureRedGolumnX + "px";
+		}
+		else if(currentTurn == "Ranger")
+		{
+			creatureRangerX -= 100;
+			creautreRangerX.style.left = creatureRangerX + "px";
+		}
+		else if(currentTurn == "NatureWisp")
+		{
+			creatureNatureWispX -= 100;
+			creatureNatureWispX.style.left = creatureNatureWispX + "px";
+		}
 		creaturePosition();
 	}
 	if(rightPressed == true)
