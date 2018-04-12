@@ -42,9 +42,9 @@ var randomOrder;
 var i = 6;
 var p = 0;
 var order = [];
-var map = [
-    [ , ],
-    [ , ],
+var map = [                                           //third number is tile type ie: grass, stone, redrock | when number is subtracting by 100 you will have a whole number if the creature is compatable with the tile if not they are not compatable                                        
+    [ , ],                                            //second number is the number of the number of that enemy ie bat[2] bat[3]
+    [ , ],											  //first number is the type of creature on tile
     [ , ],
     [ , ],
 	[ , ],
@@ -193,7 +193,7 @@ function testMapCreation(tileX, tileY)
 
 class playerCharacter {
 		
-		constructor (name,strength, agility, intelligence, baseHP, baseMana, baseAttack, baseHeadArmour, baseChestArmour, baseLegArmour, baseGauntletArmour, baseMovement) {
+		constructor (name,strength, agility, intelligence, baseHP, baseMana, baseAttack, baseHeadArmour, baseChestArmour, baseLegArmour, baseGauntletArmour, baseMovement, tilePreference) {
 			
 			this.name = name;
 			this.strength = strength;
@@ -207,6 +207,7 @@ class playerCharacter {
 			this.baseLegArmour = baseLegArmour;
 			this.baseGauntletArmour = baseGauntletArmour;
 			this.baseMovement = baseMovement;
+			this.totalArmour = baseChestArmour + baseGauntletArmour + baseHeadArmour + baseLegArmour;
 		}
 		
 		setName (Name) {
@@ -287,6 +288,32 @@ class playerCharacter {
 		{
 		   return this.baseMovement
 		}
+		//creature.combat(enemy.getArmour(), enemny.getHP());
+		combat(enemyarmour, enemyhp, casterAttack)
+		{   
+			
+				var sum = casterAttack - enemyarmour;
+				enemyhp -= sum;
+			
+			/*
+			thing.setAttack(thing.getbaseAttack(), thing.getenemyarmour());
+			thing.subhp(thing.returnAttack());
+			
+			setAttack(attack, enemyarmour)
+			{
+				var sum = attack - enemyarmour;
+				this.hp -= sum;
+			}
+			
+			totalAttack = baseAttack - enemyarmour;
+			enemyhp -= totalAttack;
+			*/
+		}
+		
+		/*tileBuff ()
+		{
+			if (tilePreference == tile)
+		}*/
 		
 		statCheck () {
 		
@@ -341,7 +368,98 @@ class MAGE extends playerCharacter
 	}
 }
 
-class MONSTER extends playerCharacter {
+class natureWisp extends playerCharacter {
+	magicSmash(caster, enemy)
+	{
+		var total =  caster.getAttack();
+		enemy.subHP(total);
+		caster.subMana(3);
+	}
+}
+
+class redGolumn extends playerCharacter {
+	swipe(caster, enemy)
+	{
+		var total = caster.getStrength() + caster.getAttack();
+		enemy.subHP(total);
+		caster.subMana(2);
+	}
+}
+
+class fellBat extends playerCharacter {
+	swipe(caster, enemy)
+	{
+		var total = caster.getStrength() + caster.getAttack();
+		enemy.subHP(total);
+		caster.subMana(2);
+	}
+}
+
+class dungeonMerchant {
+	
+}
+
+class item (armourRating, armourName, armourDurability, buyingPrice, sellingPrice){
+	
+		this.armourRating = armourRating;
+		this.armourName = armourName;
+		this.armourDuribility = armourDurability;
+		this.buyingPrice = buyingPrice;
+		this.sellingPrice = sellingPr
+		ice;
+		
+		getArmourRating()
+		{
+			return this.armourRating;
+		}
+		
+		getHeadArmourName()
+		{
+			return this.armourName;
+		}
+		
+		setArmourRating(Rating)
+		{
+			Rating = armourRating;
+		}
+		
+		setArmourName(Name)
+		{
+			Name = armourName;
+		}
+		
+		getArmourDurability()
+		{
+			return this.armourDurability;
+		}
+		
+		setArmourDurability(durability)
+		{
+			durability = armourDurability;
+		}
+		getBuyingPrice()
+		{
+			return this.buyingPrice;
+		}
+		
+		getSellingPrice()
+		{
+			return this.sellingPrice;
+		}
+		
+		setBuyingOruce(buyPrice)
+		{
+			buyPrice = buyingPrice;
+		}
+		
+		setSellingPrice(sellPrice)
+		{
+			sellPrice = sellingPrice;
+		}
+	
+}
+
+/*class MONSTER extends playerCharacter {
 	
 	swipe(caster, enemy)
 	{
@@ -355,12 +473,12 @@ class MONSTER extends playerCharacter {
 		enemy.subHP(total);
 
 	}
-}
+}*/
 	
 var main = new WARRIOR('caster',6,6,6, 30, 6, 6, 6, 6, 6, 6, 6);
 main.attackBuff(main);
 console.log(main.getMana());
 
-var FellBat = new MONSTER('Tim',6,6,6, 6, 6, 6, 6, 6, 6, 6, 6);
+var FellBat = new fellBat('Tim',6,6,6, 6, 6, 6, 6, 6, 6, 6, 6);
 FellBat.magicSmash(FellBat, main);
 console.log(main.getHealth());
