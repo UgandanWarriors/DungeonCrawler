@@ -258,6 +258,7 @@ class playerCharacter {
 			this.baseGauntletArmour = baseGauntletArmour;
 			this.baseMovement = baseMovement;
 			this.totalArmour = baseChestArmour + baseGauntletArmour + baseHeadArmour + baseLegArmour;
+			this.tilePreference = tilePreference;
 		}
 		
 		setName (Name) {
@@ -333,11 +334,26 @@ class playerCharacter {
 		addAttack (atk) {
 			this.baseAttack += atk;
 		}
+		
+		subAttack (attack){
+			this.baseAttack -= attack;
+		}
+		
+		setTilePreferecnce (tilePref)
+		{
+			this.tilePref = tilePreference;
+		}
+		
+		getTilePreference ()
+		{
+			return this.tilePreference;
+		}
 
 		getBaseMovement(mve)
 		{
 		   return this.baseMovement
 		}
+		
 		//creature.combat(enemy.getArmour(), enemny.getHP());
 		combat(enemyarmour, enemyhp, casterAttack)
 		{   
@@ -345,25 +361,9 @@ class playerCharacter {
 				var sum = casterAttack - enemyarmour;
 				enemyhp -= sum;
 			
-			/*
-			thing.setAttack(thing.getbaseAttack(), thing.getenemyarmour());
-			thing.subhp(thing.returnAttack());
 			
-			setAttack(attack, enemyarmour)
-			{
-				var sum = attack - enemyarmour;
-				this.hp -= sum;
-			}
-			
-			totalAttack = baseAttack - enemyarmour;
-			enemyhp -= totalAttack;
-			*/
 		}
-		
-		/*tileBuff ()
-		{
-			if (tilePreference == tile)
-		}*/
+
 		
 		statCheck () {
 		
@@ -385,7 +385,22 @@ class WARRIOR extends playerCharacter {
 	{
 		var total = caster.getAttack() + caster.getStrength();
 		enemy.subHP(total);
-	}	
+	}
+	
+	tilePreference(caster)
+	{
+		if (map[creatureWarriorY / 100][creatureWarriorX / 100] == "RedRock" && caster.getTilePreference() == false)
+		{
+			caster.setTilePref(true);
+			caster.addAttack(3);
+		}
+		
+		else if (map[creatureWarriorY / 100][creatureWarriorX / 100] != "RedRock" && caster.getTilePreference() == true)
+		{
+			caster.setTilePref(false);
+			caster.subAttack(3);
+		}
+	}
 }
 
 class RANGER extends playerCharacter
@@ -400,6 +415,20 @@ class RANGER extends playerCharacter
 		var total = caster.getAttack() + caster.addAttack(20);
 		caster.subMana(10);
 		enemy.subHP(total);
+	}
+	
+	tilePreference(caster)
+	{
+		if (map[creatureRangerY / 100][creatureRangerX / 100] == "Grass" && caster.getTilePreference() == false)
+		{
+			caster.addAttack(3);
+		}
+		
+		else if (map[creatureRangerY / 100][creatureRangerX / 100] != "RedRock" && caster.getTilePreference() == true)
+		{
+			caster.setTilePref(false);
+			caster.subAttack(3);
+		}
 	}
 }
 
@@ -416,6 +445,20 @@ class MAGE extends playerCharacter
 		caster.subMana(15);
 		ally.addHP(20);
 	}
+	
+	tilePreference(caster)
+	{
+		if (map[creatureMageY / 100][creatureMageX / 100] == "Stone" && caster.getTilePreference() == false)
+		{
+			caster.addAttack(3);
+		}
+	}
+	
+	else if (map[creatureMageY / 100][creatureMageX / 100] != "RedRock" && caster.getTilePreference() == true)
+		{
+			caster.setTilePref(false);
+			caster.subAttack(3);
+		}
 }
 
 class natureWisp extends playerCharacter {
@@ -424,6 +467,20 @@ class natureWisp extends playerCharacter {
 		var total =  caster.getAttack();
 		enemy.subHP(total);
 		caster.subMana(3);
+	}
+	
+	tilePreference(caster)
+	{
+		if (map[creatureNatureWispY / 100][creatureNatureWispX / 100] == "Grass" && caster.getTilePreference() == false)
+		{
+			caster.addAttack(3);
+		}
+		
+		else if (map[creatureNatureWispY / 100][creatureNatureWispX / 100] != "RedRock" && caster.getTilePreference() == true)
+		{
+			caster.setTilePref(false);
+			caster.subAttack(3);
+		}
 	}
 }
 
@@ -434,6 +491,20 @@ class redGolumn extends playerCharacter {
 		enemy.subHP(total);
 		caster.subMana(2);
 	}
+	
+	tilePreference(caster)
+	{
+		if (map[creatureRedGolumnY / 100][creatureRedGolumnX / 100] == "RedRock" && caster.getTilePreference() == false)
+		{
+			caster.addAttack(3);
+		}
+		
+		else if (map[creatureRedGolumnY / 100][creatureRedGolumnX / 100] != "RedRock" && caster.getTilePreference() == true)
+		{
+			caster.setTilePref(false);
+			caster.subAttack(3);
+		}
+	}
 }
 
 class fellBat extends playerCharacter {
@@ -442,6 +513,20 @@ class fellBat extends playerCharacter {
 		var total = caster.getStrength() + caster.getAttack();
 		enemy.subHP(total);
 		caster.subMana(2);
+	}
+	
+	tilePreference(caster)
+	{
+		if (map[creatureFellBatY / 100][creatureFellBatX / 100] == "Stone" && caster.getTilePreference() == false)
+		{
+			caster.addAttack(3);
+		}
+		
+		else if (map[creatureFellBatY / 100][creatureFellBatX / 100] != "RedRock" && caster.getTilePreference() == true)
+		{
+			caster.setTilePref(false);
+			caster.subAttack(3);
+		}
 	}
 }
 
