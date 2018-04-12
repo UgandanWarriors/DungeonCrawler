@@ -426,15 +426,16 @@ class dungeonMerchant {
 	
 }
 
-class item (armourRating, armourName, armourDurability, buyingPrice, sellingPrice){
-	
+class item {
+		
+		constructor (armourRating, armourName, armourDuribility, buyingPrice, sellingPrice){
+		
 		this.armourRating = armourRating;
 		this.armourName = armourName;
 		this.armourDuribility = armourDurability;
 		this.buyingPrice = buyingPrice;
-		this.sellingPrice = sellingPr
-		ice;
-		
+		this.sellingPrice = sellingPrice;
+		}
 		getArmourRating()
 		{
 			return this.armourRating;
