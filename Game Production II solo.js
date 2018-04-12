@@ -450,7 +450,7 @@ class dungeonMerchant {
 }
 
 class item{
-	constructor(armourRating, armourName, armourDuribility, buyingPrice, sellingPrice){
+	constructor (armourRating, armourName, armourDuribility, buyingPrice, sellingPrice){
 		this.armourRating = armourRating;
 		this.armourName = armourName;
 		this.armourDuribility = armourDurability;
