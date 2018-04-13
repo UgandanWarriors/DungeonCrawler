@@ -1,47 +1,107 @@
-
 WarriorTag
 {
-	left: 15px;
-	top: 15px;
-	z-index: 1;
-	position: absolute;
+    left: 15px;
+    top: 15px;
+    z-index: 1;
+    position: absolute;
 }
 RangerTag
 {
-	left: 15px;
-	top: 115px;
-	z-index: 1;
-	position: absolute;
+    left: 15px;
+    top: 115px;
+    z-index: 1;
+    position: absolute;
 }
 MageTag
 {
-	left: 15px;
-	top: 215px;
-	z-index: 1;
-	position: absolute;
+    left: 15px;
+    top: 215px;
+    z-index: 1;
+    position: absolute;
 }
 RedGolumnTag
 {
-	left: 1515px;
-	top: 315px;
-	z-index: 1;
-	position: absolute;
+    left: 1515px;
+    top: 315px;
+    z-index: 1;
+    position: absolute;
 }
 FellBatTag
 {
-	left: 1515px;
-	top: 415px;
-	z-index: 1;
-	position: absolute;
+    left: 1515px;
+    top: 415px;
+    z-index: 1;
+    position: absolute;
 }
 NatureWispTag
 {
-	left: 1515px;
-	top: 515px;
-	z-index: 1;
-	position: absolute;
+    left: 1515px;
+    top: 515px;
+    z-index: 1;
+    position: absolute;
 }
 .sprite
 {
-	position: absolute;
+    position: absolute;
 }
+EndTurn
+{
+    left: 400px;
+    top: 650px;
+    z-index: 1;
+    position: absolute;
+}
+RunTime{}
+
+launch
+{
+    left: 800px;
+    top: 200px;
+    z-index: 1;
+    position: absolute;
+}
+Setting
+{
+    left: 800px;
+    top: 250px;
+    z-index: 1;
+    position: absolute;
+}
+Exit
+{
+    left: 800px;
+    top:300px;
+    z-index: 1;
+    position: absolute;
+}
+MainMenuUI{}
+
+sound
+{
+    left: 800px;
+    top:200px;
+    z-index: 1;
+    position: absolute;
+}
+graphics
+{
+    left: 800px;
+    top:250px;
+    z-index: 1;
+    position: absolute;
+}
+controls
+{
+    left: 800px;
+    top:300px;
+    z-index: 1;
+    position: absolute;
+}
+back
+{
+    left: 800px;
+    top:350px;
+    z-index: 1;
+    position: absolute;
+}
+options{}

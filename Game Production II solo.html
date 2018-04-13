@@ -6,6 +6,36 @@
     </head>
     <body background = "https://thepcxp.files.wordpress.com/2012/02/up-in-ashes.jpg">
 
+<<<<<<< HEAD
+    <canvas id = "gameCanvas" width = "1600" height = "700">
+    </canvas>
+<RunTime id = "DuringGame">    
+    <WarriorTag>
+    <img class = "sprite" id = "PWarrior" src ="C:/Users/CFBTong/Documents/GitHub/DungeonCrawler/Player pic.jpe" width = 90px height = 90px>
+    </WarriorTag>
+    <RedGolumnTag>
+    <img class = "sprite" id = "RedGolumn" src = "C:/Users/CFBTong/Documents/GitHub/DungeonCrawler/RedGolumn.jpg" width = 90px height = 90px>
+    </RedGolumnTag>
+    <RangerTag>
+    <img class = "sprite" id = "Ranger" src ="C:/Users/CFBTong/Documents/GitHub/DungeonCrawler/ranger.png" width = 90px height = 90px>
+    </RangerTag>
+    <NatureWispTag>
+    <img class = "sprite" id = "NatureWisp" src = "C:/Users/CFBTong/Documents/GitHub/DungeonCrawler/NatureWisp.jpg" width = 90px height = 90px>
+    </NatureWispTag>
+    <MageTag>
+    <img class = "sprite" id = "Mage" src ="C:/Users/CFBTong/Documents/GitHub/DungeonCrawler/Mage.jpe" width = 90px height = 90px>
+    </MageTag>
+    <FellBatTag>
+    <img class = "sprite" id = "FellBat" src = "C:/Users/CFBTong/Documents/GitHub/DungeonCrawler/FellBat.jpg" width = 90px height = 90px>
+    </FellBatTag>
+    <img class = "sprite" id = "Stone" src ="C:/Users/CFBTong/Documents/GitHub/DungeonCrawler/tile.jpg" width = 90px height = 90px>
+
+    <img class = "sprite" id = "RedRock" src ="C:/Users/CFBTong/Documents/GitHub/DungeonCrawler/RedRock.jpg" width = 90px height = 90px>
+
+    <img class = "sprite" id = "Grass" src ="C:/Users/CFBTong/Documents/GitHub/DungeonCrawler/Grass.jpg" width = 90px height = 90px>
+    <EndTurn id = "EndingTurn"><button id = "pass" onclick = "TurnOrder()">End Turn</button></EndTurn>
+</RunTime>
+=======
 	<canvas id = "gameCanvas" width = "1600" height = "700">
 	</canvas>
 	
@@ -32,10 +62,30 @@
 	<img class = "sprite" id = "RedRock" src ="C:\Users\asmel\OneDrive\Documents\DungeonCrawler\RedRock.jpg" width = 90px height = 90px>
 
 	<img class = "sprite" id = "Grass" src ="C:\Users\asmel\OneDrive\Documents\DungeonCrawler\Grass.jpg" width = 90px height = 90px>
+>>>>>>> 0673777a26a6d726b20220bc4b344f839d2e65c2
     <!--do the GUI thing for this-->
-	<button id = "EndTurn" onclick = "TurnOrder()">End Turn</button>
-	    <script src = "Game Production II solo.js">
+    <MainMenuUI id = "UI">
+    <launch id = "SetupGame"><button id = "begin" onclick = "testMapCreation(tileX, tileY)">Play Game</button></launch>
+    <Setting id = "Setins"><button id = "changes" onclick = "Settings()">Settings</button></Setting>
+    <Exit id = "Leave"><button id = "finish">Quit Game</button></Exit>
+    </MainMenuUI>
+    
+    <options id = "customization">
+    <sound id = "listen"><button id = "hear">Sound</button></sound>
+    <graphics id = "looks"><button id = "visuals">Graphics</button></graphics>
+    <controls id = "inputs"><button id = "input">Controls</button></controls>
+    <back id = "backtomain"><button id = "return" onclick = "mainMenu()">To Main Menu</button></back>
+    </options>
+    
+    <button id = "fighting">Attack</button>
+    
+    <button id = "RageBlow">RagingBlow</button>
+    
+    <button id = "Target1" onclick = "Warrior.ragingBlow(Warrior, FellBat)">Attack: FellBat</button><!--this actually works-->
+    <button id = "Target2" onclick = "Warrior.ragingBlow(Warrior, RedGolumn)">Attack: RedGolumn</button>
+    <button id = "Target3" onclick = "Warrior.ragingBlow(Warrior, NatureWisp)">Attack: NatureWisp</button>
+        <script src = "Game Production II solo.js">
 
-	</script>
+    </script>
     </body>
 </html>
