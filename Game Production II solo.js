@@ -53,14 +53,12 @@ var map = [
 
 ];
 
-<<<<<<< HEAD
+
 // var store = [ steelChestPlate, steelHelmet, steelGrieves, steelGauntlets, , ]; // store inventory
 // var storeCounter = [ , , , , , ]; // store inventory item tracker
 // name armour = new armour(dfahhdfliahfiudhasiho);
 // store[0] = armour;
 
-=======
->>>>>>> 60abb320e3024fd69790f3cebdba8f0b6039e952
 var x = 0;//used for navigation of array
 var y = 0;
 var counter = 98; //to fill screen set to 98
@@ -699,7 +697,7 @@ class armour{
 		
 		subArmourDurability(arDamage) 
 		{
-			this.armourDurablilty -= arDamage;
+			this.armourDurablilty =  armourDurability - arDamage;
 		}
 		
 		getBuyingPrice()
@@ -749,9 +747,8 @@ main.attackBuff(main);
 console.log(main.getMana());
 
 var FellBat = new fellBat('Tim',6,6,6, 6, 6, 6, 6, 6, 6, 6, 6);
-<<<<<<< HEAD
+
 FellBat.combat(FellBat, main, main.getArmour(), main.getHealth(), FellBat.getAttack());
-=======
+
 //FellBat.magicSmash(FellBat, main);
->>>>>>> 60abb320e3024fd69790f3cebdba8f0b6039e952
 console.log(main.getHealth());
