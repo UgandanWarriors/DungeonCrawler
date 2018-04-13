@@ -366,7 +366,7 @@ function creatureReset()
 
 class playerCharacter {
 		
-		constructor (name,strength, agility, intelligence, baseHP, baseMana, baseAttack, baseHeadArmour, baseChestArmour, baseLegArmour, baseGauntletArmour, baseMovement) {
+		constructor (name,strength, agility, intelligence, baseHP, baseMana, baseAttack, baseTotalArour, baseMovement) {
 			
 			this.name = name;
 			this.strength = strength;
@@ -375,12 +375,12 @@ class playerCharacter {
 			this.baseHP = baseHP;
 			this.baseMana = baseMana;
 			this.baseAttack = baseAttack;
-			this.baseHeadArmour = baseHeadArmour;
-			this.baseChestArmour = baseChestArmour;
-			this.baseLegArmour = baseLegArmour;
-			this.baseGauntletArmour = baseGauntletArmour;
+			//this.baseHeadArmour = baseHeadArmour;
+			//this.baseChestArmour = baseChestArmour;
+			//this.baseLegArmour = baseLegArmour;
+			//this.baseGauntletArmour = baseGauntletArmour;
 			this.baseMovement = baseMovement;
-			this.totalArmour = baseChestArmour + baseGauntletArmour + baseHeadArmour + baseLegArmour;
+			this.totalArmour = baseTotalArour;
 		}
 		
 		setName (Name) {
@@ -470,10 +470,20 @@ class playerCharacter {
 		{
 			return this.tilePreference;
 		}
+		
+		getTotalArmour()
+		{
+			return this.totalArmour;
+		}
 
 		getBaseMovement(mve)
 		{
-		   return this.baseMovement
+		   return this.baseMovement;
+		}
+		
+		setTotalArmour(tArmour)
+		{
+			this.totalArmour = tArmour;
 		}
 		
 		//creature.combat(enemy.getArmour(), enemny.getHP());
@@ -738,17 +748,15 @@ class armour{
 	}
 }*/
 	
-var steelChestPlate = new armour( "Steel Chest Plate", 5, 5, 10, 6);
-chestPlate.subArmourDurability(1);
-console.log(chestPlate.getArmourDurability());
+/*var steelChestPlate = new armour( "Steel Chest Plate", 5, 5, 10, 6);
+steelChestPlate.subArmourDurability(1);
+console.log(steelChestPlate.getArmourDurability());*/
 	
 var main = new WARRIOR('caster',6,6,6, 30, 6, 6, 6, 6, 6, 6, 6);
 main.attackBuff(main);
 console.log(main.getMana());
 
 var FellBat = new fellBat('Tim',6,6,6, 6, 6, 6, 6, 6, 6, 6, 6);
-
-FellBat.combat(FellBat, main, main.getArmour(), main.getHealth(), FellBat.getAttack());
-
 //FellBat.magicSmash(FellBat, main);
+FellBat.combat(FellBat, main, main.getTotalArmour(), main.getHealth(), FellBat.getAttack());
 console.log(main.getHealth());
