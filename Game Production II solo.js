@@ -52,7 +52,8 @@ var map = [
 
 ];
 
-// var store = [, , , , , ];
+// var store = [ steelChestPlate, steelHelmet, steelGrieves, steelGauntlets, , ]; // store inventory
+// var storeCounter = [ , , , , , ]; // store inventory item tracker
 // name armour = new armour(dfahhdfliahfiudhasiho);
 // store[0] = armour;
 
@@ -265,7 +266,7 @@ function creatureReset()
 
 class playerCharacter {
 		
-		constructor (name,strength, agility, intelligence, baseHP, baseMana, baseAttack, baseHeadArmour, baseChestArmour, baseLegArmour, baseGauntletArmour, baseMovement, tilePreference) {
+		constructor (name,strength, agility, intelligence, baseHP, baseMana, baseAttack, baseHeadArmour, baseChestArmour, baseLegArmour, baseGauntletArmour, baseMovement) {
 			
 			this.name = name;
 			this.strength = strength;
@@ -280,7 +281,6 @@ class playerCharacter {
 			this.baseGauntletArmour = baseGauntletArmour;
 			this.baseMovement = baseMovement;
 			this.totalArmour = baseChestArmour + baseGauntletArmour + baseHeadArmour + baseLegArmour;
-			this.tilePreference = tilePreference;
 		}
 		
 		setName (Name) {
@@ -377,7 +377,7 @@ class playerCharacter {
 		}
 		
 		//creature.combat(enemy.getArmour(), enemny.getHP());
-		combat(enemyarmour, enemyhp, casterAttack)
+		combat(castor, enemy, enemyarmour, enemyhp, casterAttack)
 		{   
 			
 				var sum = casterAttack - enemyarmour;
@@ -555,8 +555,9 @@ class dungeonMerchant {
 	
 }
 
-class item{
-	constructor (armourRating, armourName, armourDuribility, buyingPrice, sellingPrice){
+class armour{
+	constructor (armourName, armourRating, armourDurability, buyingPrice, sellingPrice){
+		
 		this.armourRating = armourRating;
 		this.armourName = armourName;
 		this.armourDuribility = armourDurability;
@@ -569,14 +570,14 @@ class item{
 			return this.armourRating;
 		}
 		
-		getHeadArmourName()
-		{
-			return this.armourName;
-		}
-		
 		setArmourRating(Rating)
 		{
 			Rating = armourRating;
+		}
+		
+		getArmourName()
+		{
+			return this.armourName;
 		}
 		
 		setArmourName(Name)
@@ -593,6 +594,12 @@ class item{
 		{
 			durability = armourDurability;
 		}
+		
+		subArmourDurability(arDamage) 
+		{
+			this.armourDurablilty -= arDamage;
+		}
+		
 		getBuyingPrice()
 		{
 			return this.buyingPrice;
@@ -631,10 +638,14 @@ class item{
 	}
 }*/
 	
+var steelChestPlate = new armour( "Steel Chest Plate", 5, 5, 10, 6);
+chestPlate.subArmourDurability(1);
+console.log(chestPlate.getArmourDurability());
+	
 var main = new WARRIOR('caster',6,6,6, 30, 6, 6, 6, 6, 6, 6, 6);
 main.attackBuff(main);
 console.log(main.getMana());
 
 var FellBat = new fellBat('Tim',6,6,6, 6, 6, 6, 6, 6, 6, 6, 6);
-FellBat.magicSmash(FellBat, main);
+FellBat.combat(FellBat, main, main.getArmour(), main.getHealth(), FellBat.getAttack());
 console.log(main.getHealth());
