@@ -712,7 +712,7 @@ class armour{
 			return this.sellingPrice;
 		}
 		
-		setBuyingOruce(buyPrice)
+		setBuyingPrice(buyPrice)
 		{
 			buyPrice = buyingPrice;
 		}
