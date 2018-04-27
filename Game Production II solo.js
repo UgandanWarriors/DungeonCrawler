@@ -1042,13 +1042,13 @@ class WARRIOR extends playerCharacter {
     
     tilePreference(caster)
     {
-        if (map[creatureWarriorY / 100][creatureWarriorX / 100] == "RedRock" && caster.getTilePreference() == false)
+        if (map[CharTrackWarriorY][CharTrackWarriorX] == "RedRock" && caster.getTilePreference() == false)
         {
             caster.setTilePref(true);
             caster.addAttack(3);
         }
         
-        else if (map[creatureWarriorY / 100][creatureWarriorX / 100] != "RedRock" && caster.getTilePreference() == true)
+        else if (map[CharTrackWarriorY][CharTrackWarriorX] != "RedRock" && caster.getTilePreference() == true)
         {
             caster.setTilePref(false);
             caster.subAttack(3);
@@ -1072,12 +1072,13 @@ class RANGER extends playerCharacter
     
     tilePreference(caster)
     {
-        if (map[creatureRangerY / 100][creatureRangerX / 100] == "Grass" && caster.getTilePreference() == false)
+        if (map[CharTrackRangerY][CharTrackRangerX] == "Grass" && caster.getTilePreference() == false)
         {
-            caster.addAttack(3);
+            caster.setTilePref(true);
+			caster.addAttack(3);
         }
         
-        else if (map[creatureRangerY / 100][creatureRangerX / 100] != "RedRock" && caster.getTilePreference() == true)
+        else if (map[CharTrackRangerY][CharTrackRangerX] != "RedRock" && caster.getTilePreference() == true)
         {
             caster.setTilePref(false);
             caster.subAttack(3);
@@ -1101,11 +1102,12 @@ class MAGE extends playerCharacter
     
     tilePreference(caster)
     {
-        if (map[creatureMageY / 100][creatureMageX / 100] == "Stone" && caster.getTilePreference() == false)
+        if (map[CharTrackMageY][CharTrackMageX] == "Stone" && caster.getTilePreference() == false)
         {
+			caster.setTilePref(true);
             caster.addAttack(3);
         }
-        else if (map[creatureMageY / 100][creatureMageX / 100] != "RedRock" && caster.getTilePreference() == true)
+        else if (map[CharTrackMageY][CharTrackMageX] != "RedRock" && caster.getTilePreference() == true)
         {
             caster.setTilePref(false);
             caster.subAttack(3);
@@ -1123,12 +1125,13 @@ class natureWisp extends playerCharacter {
     
     tilePreference(caster)
     {
-        if (map[creatureNatureWispY / 100][creatureNatureWispX / 100] == "Grass" && caster.getTilePreference() == false)
+        if (map[CharTrackNatureWispY][CharTrackNatureWispX] == "Grass" && caster.getTilePreference() == false)
         {
+			caster.setTilePref(true);
             caster.addAttack(3);
         }
         
-        else if (map[creatureNatureWispY / 100][creatureNatureWispX / 100] != "RedRock" && caster.getTilePreference() == true)
+        else if (map[CharTrackNatureWispY][CharTrackNatureWispX] != "RedRock" && caster.getTilePreference() == true)
         {
             caster.setTilePref(false);
             caster.subAttack(3);
@@ -1146,12 +1149,13 @@ class redGolumn extends playerCharacter {
     
     tilePreference(caster)
     {
-        if (map[creatureRedGolumnY / 100][creatureRedGolumnX / 100] == "RedRock" && caster.getTilePreference() == false)
+        if (map[CharTrackRedGolumnY][CharTrackRedGolumnX] == "RedRock" && caster.getTilePreference() == false)
         {
+			caster.setTilePref(true);
             caster.addAttack(3);
         }
         
-        else if (map[creatureRedGolumnY / 100][creatureRedGolumnX / 100] != "RedRock" && caster.getTilePreference() == true)
+        else if (map[CharTrackRedGolumnY][CharTrackRedGolumnX] != "RedRock" && caster.getTilePreference() == true)
         {
             caster.setTilePref(false);
             caster.subAttack(3);
@@ -1169,81 +1173,17 @@ class fellBat extends playerCharacter {
     
     tilePreference(caster)
     {
-        if (map[creatureFellBatY / 100][creatureFellBatX / 100] == "Stone" && caster.getTilePreference() == false)
+        if (map[CharTrackFellBatY][CharTrackFellBatX] == "Stone" && caster.getTilePreference() == false)
         {
             caster.addAttack(3);
         }
         
-        else if (map[creatureFellBatY / 100][creatureFellBatX / 100] != "RedRock" && caster.getTilePreference() == true)
+        else if (map[CharTrackFellBatY][CharTrackellBatX] != "RedRock" && caster.getTilePreference() == true)
         {
             caster.setTilePref(false);
             caster.subAttack(3);
         }
     }
-}
-
-class dungeonMerchant {
-    
-}
-
-class item{
-    constructor (armourRating, armourName, armourDuribility, buyingPrice, sellingPrice){
-        this.armourRating = armourRating;
-        this.armourName = armourName;
-        this.armourDuribility = armourDurability;
-        this.buyingPrice = buyingPrice;
-        this.sellingPrice = sellingPrice;
-    }
-        
-        getArmourRating()
-        {
-            return this.armourRating;
-        }
-        
-        getHeadArmourName()
-        {
-            return this.armourName;
-        }
-        
-        setArmourRating(Rating)
-        {
-            Rating = armourRating;
-        }
-        
-        setArmourName(Name)
-        {
-            Name = armourName;
-        }
-        
-        getArmourDurability()
-        {
-            return this.armourDurability;
-        }
-        
-        setArmourDurability(durability)
-        {
-            durability = armourDurability;
-        }
-        getBuyingPrice()
-        {
-            return this.buyingPrice;
-        }
-        
-        getSellingPrice()
-        {
-            return this.sellingPrice;
-        }
-        
-        setBuyingOruce(buyPrice)
-        {
-            buyPrice = buyingPrice;
-        }
-        
-        setSellingPrice(sellPrice)
-        {
-            sellPrice = sellingPrice;
-        }
-    
 }
 
 /*class MONSTER extends playerCharacter {
