@@ -1263,4 +1263,7 @@ var FellBat = new fellBat('Tim',6,6,6, 6, 6, 6, 6, 6, 6, 6, 6);
 var RedGolumn = new redGolumn('moltenGiant', 7,7,7, 35, 4,5,6,4,3,2,1);
 var NatureWisp = new natureWisp('Druid', 4,5,4, 20,3,2,3,5,5,5,5);
 console.log(FellBat.getHealth() + " Is how much hp FellBat has");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 811c072657ce76717f67f88e7b4d94a148ca5514
