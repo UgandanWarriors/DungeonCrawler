@@ -892,7 +892,7 @@ class dungeonMerchant {
 }
 
 <<<<<<< HEAD
-class item{
+/*class item{
     constructor (armourRating, armourName, armourDuribility, buyingPrice, sellingPrice){
         this.armourRating = armourRating;
         this.armourName = armourName;
@@ -1015,7 +1015,7 @@ class armour{
 		{
 			sellPrice = sellingPrice;
 		}
-	
+	*/
 >>>>>>> 0673777a26a6d726b20220bc4b344f839d2e65c2
 }
 
