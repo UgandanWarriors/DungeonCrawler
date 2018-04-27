@@ -1013,6 +1013,8 @@ class playerCharacter {
             
                 var sum = casterAttack - enemyarmour;
                 enemyhp -= sum;
+				
+				alert(caster + " dealt " + sum + " damage.");
             
             
         }
