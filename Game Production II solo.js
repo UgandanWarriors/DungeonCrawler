@@ -52,17 +52,7 @@ var map = [
     [ , ]
 
 ];
-<<<<<<< HEAD
 console.log(creatureWarrior.style.top);
-=======
-
-
-// var store = [ steelChestPlate, steelHelmet, steelGrieves, steelGauntlets, , ]; // store inventory
-// var storeCounter = [ , , , , , ]; // store inventory item tracker
-// name armour = new armour(dfahhdfliahfiudhasiho);
-// store[0] = armour;
-
->>>>>>> 0673777a26a6d726b20220bc4b344f839d2e65c2
 var x = 0;//used for navigation of array
 var y = 0;
 var counter = 98; //to fill screen set to 98
@@ -456,10 +446,24 @@ function WinLose()
         console.log("Your party has killed all of the enemies in this part of the dungeon you WIN");
     }
 }
+function combatAbilities()
+{
+    if(currentTurnName == "Warrior")
+    {
+        
+    }
+    else if(currentTurnName == "Ranger")
+    {
+        
+    }
+    else if(currentTurnName == "Mage")
+    {
+        
+    }
+}
 // get and set methods is how you would do it for combat
 
 class playerCharacter {
-<<<<<<< HEAD
         
         constructor (name,strength, agility, intelligence, baseHP, baseMana, baseAttack, baseHeadArmour, baseChestArmour, baseLegArmour, baseGauntletArmour, baseMovement, tilePreference) {
             
@@ -589,147 +593,6 @@ class playerCharacter {
         }
     }
     
-=======
-		
-		constructor (name,strength, agility, intelligence, baseHP, baseMana, baseAttack, baseTotalArour, baseMovement) {
-			
-			this.name = name;
-			this.strength = strength;
-			this.agility = agility;
-			this.intelligence = intelligence;
-			this.baseHP = baseHP;
-			this.baseMana = baseMana;
-			this.baseAttack = baseAttack;
-			//this.baseHeadArmour = baseHeadArmour;
-			//this.baseChestArmour = baseChestArmour;
-			//this.baseLegArmour = baseLegArmour;
-			//this.baseGauntletArmour = baseGauntletArmour;
-			this.baseMovement = baseMovement;
-			this.totalArmour = baseTotalArour;
-		}
-		
-		setName (Name) {
-			this.name = Name;
-		}
-		
-		getName () {
-			return this.name;
-		}
-		
-		setStrength(str)
-		{
-			this.strength = str;
-		}
-		getStrength()
-		{
-			return this.strength;
-		}
-
-		setAgility(agi)
-		{
-			this.agility = agi;
-		}
-		getAgility()
-		{
-			return this.agility;
-		}
-
-		setIntelligence(intell)
-		{
-			this.intelligence = intell;
-		}
-		getIntelligence()
-		{
-			return this.intelligence;
-		}
-
-		setHP (health) {
-			this.baseHP = health;
-		}
-		
-		getHealth () {
-			return this.baseHP;
-		}
-		
-		setMana (MP) {
-			this.baseMana = MP;
-		}
-		
-		getMana () {
-			return this.baseMana;
-		}
-		
-		setAttack (atk) {
-			this.baseAttack = atk;
-		}
-		
-		getAttack () {
-			return this.baseAttack;
-		}
-		
-		subMana (MP) {
-			this.baseMana -= MP;
-		}
-		
-		subHP (health) {
-			this.baseHP -= health;
-		}
-		addHP(health) {
-			this.baseHP += health;
-		}
-		
-		addAttack (atk) {
-			this.baseAttack += atk;
-		}
-		
-		subAttack (attack){
-			this.baseAttack -= attack;
-		}
-		
-		setTilePreferecnce (tilePref)
-		{
-			this.tilePref = tilePreference;
-		}
-		
-		getTilePreference ()
-		{
-			return this.tilePreference;
-		}
-		
-		getTotalArmour()
-		{
-			return this.totalArmour;
-		}
-
-		getBaseMovement(mve)
-		{
-		   return this.baseMovement;
-		}
-		
-		setTotalArmour(tArmour)
-		{
-			this.totalArmour = tArmour;
-		}
-		
-		//creature.combat(enemy.getArmour(), enemny.getHP());
-		combat(castor, enemy, enemyarmour, enemyhp, casterAttack)
-		{   
-			
-				var sum = casterAttack - enemyarmour;
-				enemyhp -= sum;
-			
-			
-		}
-
-		
-		statCheck () {
-		
-			console.log(this.name + this.baseHP + this.baseMana + this.baseHeadArmour + this.baseChestArmour + this.baseLegArmour + this.baseGauntletArmour);
-		
-		}
-	}
-	
->>>>>>> 0673777a26a6d726b20220bc4b344f839d2e65c2
 class WARRIOR extends playerCharacter {
     
 
@@ -865,7 +728,7 @@ class redGolumn extends playerCharacter {
 }
 
 class fellBat extends playerCharacter {
-    swipe(caster, enemy)
+    bite(caster, enemy)
     {
         var total = caster.getStrength() + caster.getAttack();
         enemy.subHP(total);
@@ -891,8 +754,7 @@ class dungeonMerchant {
     
 }
 
-<<<<<<< HEAD
-/*class item{
+class item{
     constructor (armourRating, armourName, armourDuribility, buyingPrice, sellingPrice){
         this.armourRating = armourRating;
         this.armourName = armourName;
@@ -950,73 +812,6 @@ class dungeonMerchant {
             sellPrice = sellingPrice;
         }
     
-=======
-class armour{
-	constructor (armourName, armourRating, armourDurability, buyingPrice, sellingPrice){
-		
-		this.armourRating = armourRating;
-		this.armourName = armourName;
-		this.armourDuribility = armourDurability;
-		this.buyingPrice = buyingPrice;
-		this.sellingPrice = sellingPrice;
-	}
-		
-		getArmourRating()
-		{
-			return this.armourRating;
-		}
-		
-		setArmourRating(Rating)
-		{
-			Rating = armourRating;
-		}
-		
-		getArmourName()
-		{
-			return this.armourName;
-		}
-		
-		setArmourName(Name)
-		{
-			Name = armourName;
-		}
-		
-		getArmourDurability()
-		{
-			return this.armourDurability;
-		}
-		
-		setArmourDurability(durability)
-		{
-			durability = armourDurability;
-		}
-		
-		subArmourDurability(arDamage) 
-		{
-			this.armourDurablilty =  armourDurability - arDamage;
-		}
-		
-		getBuyingPrice()
-		{
-			return this.buyingPrice;
-		}
-		
-		getSellingPrice()
-		{
-			return this.sellingPrice;
-		}
-		
-		setBuyingPrice(buyPrice)
-		{
-			buyPrice = buyingPrice;
-		}
-		
-		setSellingPrice(sellPrice)
-		{
-			sellPrice = sellingPrice;
-		}
-	*/
->>>>>>> 0673777a26a6d726b20220bc4b344f839d2e65c2
 }
 
 /*class MONSTER extends playerCharacter {
@@ -1034,7 +829,6 @@ class armour{
 
     }
 }*/
-<<<<<<< HEAD
     
 var Warrior = new WARRIOR('caster',6,6,6, 30, 6, 6, 6, 6, 6, 6, 6);
 var Ranger = new RANGER('thot', 5,5,5, 20, 2, 2, 2, 1, 1, 5, 5);
@@ -1043,23 +837,3 @@ var FellBat = new fellBat('Tim',6,6,6, 6, 6, 6, 6, 6, 6, 6, 6);
 var RedGolumn = new redGolumn('moltenGiant', 7,7,7, 35, 4,5,6,4,3,2,1);
 var NatureWisp = new natureWisp('Druid', 4,5,4, 20,3,2,3,5,5,5,5);
 console.log(FellBat.getHealth() + " Is how much hp FellBat has");
-
-=======
-	
-/*var steelChestPlate = new armour( "Steel Chest Plate", 5, 5, 10, 6);
-steelChestPlate.subArmourDurability(1);
-console.log(steelChestPlate.getArmourDurability());*/
-	
-var main = new WARRIOR('caster',6,6,6, 30, 6, 6, 6, 6, 6, 6, 6);
-main.attackBuff(main);
-console.log(main.getMana());
-
-var FellBat = new fellBat('Tim',6,6,6, 6, 6, 6, 6, 6, 6, 6, 6);
-//FellBat.magicSmash(FellBat, main);
-<<<<<<< HEAD
-FellBat.combat(FellBat, main, main.getTotalArmour(), main.getHealth(), FellBat.getAttack());
-console.log(main.getHealth());
-=======
-console.log(main.getHealth());
->>>>>>> 0673777a26a6d726b20220bc4b344f839d2e65c2
->>>>>>> 43ed78321531fdc4bffd4580077a3c3407ce1b1e
