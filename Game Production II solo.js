@@ -441,8 +441,7 @@ function monsterAIMove()
 	
 	for (var moves = 2; moves != 0; moves--)
 	{
-	
-	if (currentTurnName == "NatureWisp")
+		if (currentTurnName == "NatureWisp")
 	{
 		
 		if (CharTrackNatureWispY > CharTrackWarriorY)
@@ -718,6 +717,9 @@ function monsterAIMove()
 		}
 	}
 	
+	
+	}
+	
 	if (currentTurnName == "RedGolumn")
 	{
 		
@@ -858,6 +860,7 @@ function monsterAIMove()
 	
 	}
 }
+
 }
 
 
