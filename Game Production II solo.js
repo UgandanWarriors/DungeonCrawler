@@ -861,16 +861,22 @@ function monsterAIMove()
 }
 
 
+
+
 function WinLose()
 {
     if(Warrior.getHealth() <= 0 && Ranger.getHealth() <= 0 && Mage.getHealth() <= 0)
     {
-        console.log("Everyone died you have lost");
+        alert("Everyone died you have lost");
     }
     else if(FellBat.getHealth() <= 0 && RedGolumn.getHealth() <= 0 && natureWisp.getHealth() <= 0)
     {
-        console.log("Your party has killed all of the enemies in this part of the dungeon you WIN");
+        alert("Your party has killed all of the enemies in this part of the dungeon you WIN");
     }
+	if(FellBat.getHealth() <= 0 && RedGolumn.getHealth() <= 0 && natureWisp.getHealth() <= 0 && level == 5)
+	{
+		alert("You have slain all of the monsters in this dungeon. YOU WIN!");
+	}
 }
 function combatAbilities()
 {
